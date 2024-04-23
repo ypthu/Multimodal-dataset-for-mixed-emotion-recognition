@@ -108,9 +108,9 @@ def perifeaext(rootpath):
             print(i,'===',j)
             data_ppg = ppg_datas[0, ppg_datas[1,:]==j]
             # data_ppg_s = smooth_ppg_signal(signal=data_ppg[i], sample_rate=100)
-            ds_ppg = butter_bandpass(data_ppg, 0.5, 8, 100)
+            ds_ppg = data_ppg #butter_bandpass(data_ppg, 0.5, 8, 100)
             data_gsr = gsr_datas[0, gsr_datas[1,:]==j]
-            ds_gsr = butter_lowpass(data_gsr, 1.0, 4)
+            ds_gsr = data_gsr #butter_lowpass(data_gsr, 1.0, 4)
             gsr_fea = featurefromgsr(ds_gsr)
             ppg_fea = featurefromppg(ds_ppg)
             vids = np.append(vids, np.ones(gsr_fea.shape[0], np.int32) * j)
